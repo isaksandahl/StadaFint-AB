@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     res.send('Hej')
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, user) => {
     const { username, password, confirmPassword, email } = req.body;
 
     UsersModel.findOne({ username }, async (req, res) => {
