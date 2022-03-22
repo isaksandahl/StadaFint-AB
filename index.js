@@ -4,7 +4,8 @@ require("./mongoose.js");
 const express = require("express");
 const exphbs = require("express-handlebars");
 
-const userRoute = require("./models/UsersModel.js")
+const userRoute = require("./routers/userRoute.js");
+const bookingRoute = require("./routers/bookingRoute.js");
 
 const utils = require("./utils.js");
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static("public"));
 
 app.use('/user', userRoute);
+app.use("/bookings", bookingRoute);
 
 app.get("/", (req, res) => {
     res.render("home");
