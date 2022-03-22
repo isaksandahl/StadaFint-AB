@@ -20,7 +20,7 @@ app.set("view engine", "hbs");
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static("public"));
 
-app.use('/', userRoute);
+app.use('/user', userRoute);
 
 app.get("/", (req, res) => {
     res.render("home");
