@@ -3,3 +3,11 @@ const getHashedPassword = (hashedPassword) => {
     const hash = sha256.update(hashedPassword).digest("base64");
     return hash;
   };
+
+  function validateUsername(username) {
+    let valid = true;
+  
+    valid = valid && username.length > 3;
+  
+    return valid;
+  }
