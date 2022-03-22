@@ -4,7 +4,7 @@ require("./mongoose.js");
 const express = require("express");
 const exphbs = require("express-handlebars");
 
-const userRoute = require("./models/UsersModel.js")
+const registerRoute = require("./routers/registerRoute.js")
 
 const utils = require("./utils.js");
 
@@ -20,7 +20,7 @@ app.set("view engine", "hbs");
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static("public"));
 
-app.use('/user', userRoute);
+app.use('/user', registerRoute);
 
 app.get("/", (req, res) => {
     res.render("home");
