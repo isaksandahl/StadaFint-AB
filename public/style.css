@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cards-section {
+  display: flex;
+  padding: 15px;
+}
+
+#cards {
+  padding: 0;
+}
+
+.cards-icon {
+  margin: auto;
+  display: block;
+}

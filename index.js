@@ -24,11 +24,18 @@ app.set("view engine", "hbs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.use('/user', registerRoute);
+app.use("/user", registerRoute);
 app.use("/bookings", bookingRoute);
 
 app.get("/", (req, res) => {
   res.render("home");
+});
+
+app.get("/om-oss", (req, res) => {
+  res.render("about");
+});
+app.get("/kontakt", (req, res) => {
+  res.render("contact");
 });
 
 app.listen(8000, () => {
