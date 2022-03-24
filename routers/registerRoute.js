@@ -1,8 +1,10 @@
-require('../mongoose.js')
+require("dotenv").config();
+require('../mongoose.js');
+
 const express = require("express");
 const router = express.Router();
 const UsersModel = require("../models/UsersModel.js");
-const utils = require('../utils.js')
+const utils = require('../utils.js');
 
 router.get('/register', (req, res) => {
     res.render('users/users-create');
@@ -12,10 +14,10 @@ router.get('/', (req, res) => {
     res.send('Hej')
 })
 
-router.post('/register', async (req, user) => {
+router.post('/register', async (req, res) => {
     const { username, password, confirmPassword, email } = req.body;
 
-    UsersModel.findOne({ username }, async (req, res) => {
+    UsersModel.findOne({ username }, async (err, user) => {
         if (user) {
             res.render('users/users-create', {
                 userTakenError: "Username is already taken!",

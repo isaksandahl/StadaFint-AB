@@ -4,10 +4,22 @@ const getHashedPassword = (hashedPassword) => {
     return hash;
   };
 
+  const hashedPassword = (password) => {
+    const hashValue = bcrypt.hashSync(password, 12);
+  
+    return hashValue;
+  };
+
   function validateUsername(username) {
     let valid = true;
   
     valid = valid && username.length > 3;
   
     return valid;
+  };
+
+  module.exports = {
+    getHashedPassword,
+    validateUsername,
+    hashedPassword,
   }
