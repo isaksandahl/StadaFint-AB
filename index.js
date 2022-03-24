@@ -4,9 +4,11 @@ require("./mongoose.js");
 const express = require("express");
 const exphbs = require("express-handlebars");
 
-const registerRoute = require("./routers/registerRoute.js")
+const registerRoute = require("./routers/registerRoute.js");
 
 const utils = require("./utils.js");
+
+const UsersModel = require("./models/UsersModel.js");
 
 const app = express();
 

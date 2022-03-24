@@ -26,9 +26,13 @@ router.post('/register', async (req, res) => {
             res.render("users/users-create", {
                 confirmPassError: "Passwords do not match",
             })
-        } else if (password.length <= 5) {
+        } else if (password.lenght <= 5) {
             res.render("users/users-create", {
                 passLengthError: "Passwords need to be longer than 5 characters.",
+            });
+        } else if (email !== " " && utils.validateEmailAddress(email) === -1) {
+            res.render("users/users-create", {
+                emailNotValid: "Enter a correct email.",
             });
         } else {
             const newUser = new UsersModel({
@@ -36,16 +40,17 @@ router.post('/register', async (req, res) => {
                 hashedPassword: utils.hashedPassword(password),
                 email,
             });
+        
             if (utils.validateUsername(newUser.username)) {
                 await newUser.save();
                 res.redirect("/");
             } else {
                 res.render("users/users-create", {
                     usernameLenghtError: "Username needs to be more than 3 characters.",
-                })
+                });
             }
         }
-    })
-})
+    });
+});
 
 module.exports = router;

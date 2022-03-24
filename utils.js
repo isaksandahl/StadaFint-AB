@@ -1,3 +1,6 @@
+const crypto = require("crypto");
+const bcrypt = require("bcrypt");
+
 const getHashedPassword = (hashedPassword) => {
     const sha256 = crypto.createHash("sha256");
     const hash = sha256.update(hashedPassword).digest("base64");
@@ -18,8 +21,18 @@ const getHashedPassword = (hashedPassword) => {
     return valid;
   };
 
+  function validateEmailAddress(input) {
+    var regex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+    if (regex.test(input)) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
   module.exports = {
     getHashedPassword,
     validateUsername,
     hashedPassword,
+    validateEmailAddress,
   }

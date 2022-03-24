@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.register-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.register-wrapper form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.register-error {
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.register-wrapper form input {
+    width: 15rem;
+    height: 3rem;
+    margin: 0.3rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.7rem;
+    background-color: rgba(5, 118, 184, 0.507);
+    border: none;
+    outline: none;
+}
