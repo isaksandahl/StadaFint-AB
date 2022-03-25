@@ -9,6 +9,8 @@ const bookingRoute = require("./routers/bookingRoute.js");
 
 const utils = require("./utils.js");
 
+const UsersModel = require("./models/UsersModel.js");
+
 const app = express();
 
 app.engine(
