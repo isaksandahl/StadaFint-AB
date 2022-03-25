@@ -11,6 +11,7 @@ const bookingSchema = new mongoose.Schema({
     time: { type: String, required: true},
     type_of_customer: { type: String, required: true},
     type_of_service: { type: String, required: true},
+    request: String,
     customer: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
     status: { type: String, default: "Obekräftad"}
 });

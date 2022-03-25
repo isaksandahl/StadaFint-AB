@@ -19,7 +19,8 @@ router.post("/new", async (req, res) => {
         date,
         time,
         type_of_service,
-        type_of_customer
+        type_of_customer,
+        request
     } = req.body;
 
     const newBooking = new BookingModel({
@@ -32,7 +33,8 @@ router.post("/new", async (req, res) => {
         date,
         time,
         type_of_customer,
-        type_of_service
+        type_of_service,
+        request
     });
 
     await newBooking.save();
