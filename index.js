@@ -42,18 +42,22 @@ app.get("/kontakt", (req, res) => {
 });
 
 app.get("/seed-data", async (req, res) => {
-    const admin = new UsersModel({
-        username: "admin",
-        hashedPassword: utils.getHashedPassword("12qw12qw"),
-        email: "admin.stadafint@gmail.com",
-        admin: true
-    });
+  const admin = new UsersModel({
+    username: "admin",
+    hashedPassword: utils.getHashedPassword("12qw12qw"),
+    email: "admin.stadafint@gmail.com",
+    admin: true,
+  });
 
-    await admin.save();
+  await admin.save();
 
-    console.log(admin);
+  console.log(admin);
 
-    res.redirect("/");
+  res.redirect("/");
+});
+
+app.get("/betalning", (req, res) => {
+  res.render("payment");
 });
 
 app.listen(8000, () => {
