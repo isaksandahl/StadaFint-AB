@@ -23,6 +23,7 @@ const userSchema = new Schema({
         immutable: true,
         default: () => Date.now(),
     },
+    admin: { type: Boolean, default: false }
 });
 
 const UsersModel = model("Users", userSchema);

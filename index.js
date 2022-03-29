@@ -41,6 +41,21 @@ app.get("/kontakt", (req, res) => {
   res.render("contact");
 });
 
+app.get("/seed-data", async (req, res) => {
+    const admin = new UsersModel({
+        username: "admin",
+        hashedPassword: utils.getHashedPassword("12qw12qw"),
+        email: "admin.stadafint@gmail.com",
+        admin: true
+    });
+
+    await admin.save();
+
+    console.log(admin);
+
+    res.redirect("/");
+});
+
 app.listen(8000, () => {
   console.log("http://localhost:8000");
 });
