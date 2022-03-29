@@ -36,8 +36,13 @@ app.get("/", (req, res) => {
 app.get("/om-oss", (req, res) => {
   res.render("about");
 });
+
 app.get("/kontakt", (req, res) => {
   res.render("contact");
+});
+
+app.get("/betalning", (req, res) => {
+  res.render("payment");
 });
 
 app.listen(8000, () => {
