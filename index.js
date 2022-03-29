@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 app.get("/om-oss", (req, res) => {
   res.render("about");
 });
+
 app.get("/kontakt", (req, res) => {
   res.render("contact");
 });
