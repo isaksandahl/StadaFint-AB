@@ -54,3 +54,9 @@
   border: none;
   outline: none;
 }
+
+.orderconfirm {
+  padding: 60px;
+  padding-left: 120px;
+  padding-right: 120px;
+}

@@ -60,6 +60,10 @@ app.get("/betalning", (req, res) => {
   res.render("payment");
 });
 
+app.get("/order", (req, res) => {
+  res.render("orderconfirm");
+});
+
 app.listen(8000, () => {
   console.log("http://localhost:8000");
 });
