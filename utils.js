@@ -13,6 +13,11 @@ const getHashedPassword = (hashedPassword) => {
     return hashValue;
   };
 
+  const comparePassword = (password, hash) => {
+    const correct = bcrypt.compareSync(password, hash);
+    return correct;
+  };
+
   function validateUsername(username) {
     let valid = true;
   
@@ -35,4 +40,5 @@ const getHashedPassword = (hashedPassword) => {
     validateUsername,
     hashedPassword,
     validateEmailAddress,
+    comparePassword,
   }

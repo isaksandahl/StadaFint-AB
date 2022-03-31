@@ -3,9 +3,12 @@ require("./mongoose.js");
 
 const express = require("express");
 const exphbs = require("express-handlebars");
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 const registerRoute = require("./routers/registerRoute.js");
 const bookingRoute = require("./routers/bookingRoute.js");
+const loginRoute = require("./routers/loginRoute.js")
 
 const utils = require("./utils.js");
 
@@ -25,9 +28,28 @@ app.set("view engine", "hbs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(cookieParser());
+
+app.use(async (req, res, next) => {
+  const { token } = req.cookies;
+
+  if (token && jwt.verify(token, process.env.JWTSECRET)) {
+    const tokenData = jwt.decode(token, process.env.JWTSECRET);
+    res.locals.loggedIn = true;
+    res.locals.userId = tokenData.userId;
+    res.locals.username = tokenData.username;
+    
+    const user = await UsersModel.findById(tokenData.userId);
+    res.locals.imageUrl = user.imageUrl;
+  } else {
+    res.locals.loggedIn = false;
+  }
+  next();
+});
 
 app.use("/user", registerRoute);
 app.use("/bookings", bookingRoute);
+app.use("/login", loginRoute);
 
 app.get("/", (req, res) => {
   res.render("home");
