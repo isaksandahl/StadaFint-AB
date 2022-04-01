@@ -6,13 +6,13 @@ const router = express.Router();
 const UsersModel = require("../models/UsersModel.js");
 const utils = require('../utils.js');
 
+router.get('/', (req, res) => {
+    res.send('Hej');
+});
+
 router.get('/register', (req, res) => {
     res.render('users/users-create');
-})
-
-router.get('/', (req, res) => {
-    res.send('Hej')
-})
+});
 
 router.post('/register', async (req, res) => {
     const { username, password, confirmPassword, email } = req.body;
@@ -51,6 +51,10 @@ router.post('/register', async (req, res) => {
             }
         }
     });
+});
+
+router.get("/mina-sidor", async (req, res) => {
+    res.render("my-pages");
 });
 
 module.exports = router;
